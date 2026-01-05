@@ -1,0 +1,7 @@
+project_id = "errldcatzilvqvoyleds"
+
+[functions.analyze-food]
+verify_jwt = false
+
+[functions.analyze-food-image]
+verify_jwt = false
