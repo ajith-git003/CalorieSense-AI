@@ -16,29 +16,33 @@ import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
 
+import ErrorBoundary from "@/components/ErrorBoundary";
+
 const App = () => (
-  <QueryClientProvider client={queryClient}>
-    <TooltipProvider>
-      <MealProvider>
-        <Toaster />
-        <Sonner />
-        <BrowserRouter>
-          <Routes>
-            <Route path="/" element={<Index />} />
-            <Route path="/food-logger" element={<FoodLogger />} />
-            <Route path="/food-details/:id" element={<FoodDetails />} />
-            <Route path="/settings" element={<Settings />} />
-            <Route path="/meal-history" element={<MealHistory />} />
-            <Route path="/analytics" element={<Analytics />} />
-            <Route path="/recipes" element={<Recipes />} />
-            <Route path="/recipe/:id" element={<RecipeDetails />} />
-            {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-            <Route path="*" element={<NotFound />} />
-          </Routes>
-        </BrowserRouter>
-      </MealProvider>
-    </TooltipProvider>
-  </QueryClientProvider>
+  <ErrorBoundary>
+    <QueryClientProvider client={queryClient}>
+      <TooltipProvider>
+        <MealProvider>
+          <Toaster />
+          <Sonner />
+          <BrowserRouter>
+            <Routes>
+              <Route path="/" element={<Index />} />
+              <Route path="/food-logger" element={<FoodLogger />} />
+              <Route path="/food-details/:id" element={<FoodDetails />} />
+              <Route path="/settings" element={<Settings />} />
+              <Route path="/meal-history" element={<MealHistory />} />
+              <Route path="/analytics" element={<Analytics />} />
+              <Route path="/recipes" element={<Recipes />} />
+              <Route path="/recipe/:id" element={<RecipeDetails />} />
+              {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+          </BrowserRouter>
+        </MealProvider>
+      </TooltipProvider>
+    </QueryClientProvider>
+  </ErrorBoundary>
 );
 
 export default App;
